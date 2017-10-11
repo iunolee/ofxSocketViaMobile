@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <style>
+  #button1, #button2, #button3 {
+    width : 100%;
+    height : 200px;
+    font-size: 3em;
+  }
+  </style>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+
+    // socket connection
+    const socket = io.connect();
+    socket.on('connect', function() {
+      console.log("Connected");
+    });
+
+    function init() {
+      const button1 = document.getElementById('button1')
+      const button2 = document.getElementById('button2')
+      const button3 = document.getElementById('button3')
+      button1.addEventListener('click', send);
+      button2.addEventListener('click', send);
+      button3.addEventListener('click', send);
+    }
+
+    function send() {
+      console.log(this.value)
+      socket.emit('button', this.value);
+    }
+
+    window.addEventListener('load', init);
+  </script>
+</head>
+
+<body>
+  <button id="button1" value=255>1</button>
+  <br>
+  <button id="button2" value=125>2</button>
+  <br>
+  <button id="button3" value=0>3</button>
+
+
+</body>
+
+</html>
