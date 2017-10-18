@@ -1,16 +1,120 @@
 <html>
 
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:700" rel="stylesheet">
   <style>
-  #button1, #button2, #button3 {
-    width : 100%;
-    height : 200px;
-    font-size: 3em;
-  }
+    body {
+      margin: 0;
+      background: #363636;
+    }
+
+    #titleChild {
+      font-size: 2.7em;
+      font-family: 'Montserrat Alternates', sans-serif;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      color: white;
+    }
+
+    #titleParent {
+      display: table;
+      width: 100%;
+      height: 11.9%;
+    }
+
+    .button {
+      width: 100%;
+      height: 11%;
+      font-size: 2em;
+      font-family: 'Montserrat Alternates', sans-serif;
+      background: #363636;
+      border-style: solid;
+      border-width: 1px;
+    }
+
+    #button1 {
+      color: #ffee33;
+      border-color: #ffee33;
+    }
+
+    #button1:active {
+      color: #363636;
+      background: #ffee33;
+    }
+
+    #button2 {
+      color: #99ff33;
+      border-color: #99ff33;
+    }
+
+    #button2:active {
+      color: #363636;
+      background: #99ff33;
+    }
+
+    #button3 {
+      color: #37ffbb;
+      border-color: #37ffbb;
+    }
+
+    #button3:active {
+      color: #363636;
+      background: #37ffbb;
+    }
+
+    #button4 {
+      color: #33ddff;
+      border-color: #33ddff;
+    }
+
+    #button4:active {
+      color: #363636;
+      background: #33ddff;
+    }
+
+    #button5 {
+      color: #5533ff;
+      border-color: #5533ff;
+    }
+
+    #button5:active {
+      color: #363636;
+      background: #5533ff;
+    }
+
+    #button6 {
+      color: #dd33ff;
+      border-color: #dd33ff;
+    }
+
+    #button6:active {
+      color: #363636;
+      background: #dd33ff;
+    }
+
+    #button7 {
+      color: #ff3355;
+      border-color: #ff3355;
+    }
+
+    #button7:active {
+      color: #363636;
+      background: #ff3355;
+    }
+
+    #button8 {
+      color: #ff9833;
+      border-color: #ff9833;
+    }
+
+    #button8:active {
+      color: #363636;
+      background: #ff9833;
+    }
   </style>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">
-
     // socket connection
     const socket = io.connect();
     socket.on('connect', function() {
@@ -18,12 +122,14 @@
     });
 
     function init() {
-      const button1 = document.getElementById('button1')
-      const button2 = document.getElementById('button2')
-      const button3 = document.getElementById('button3')
-      button1.addEventListener('click', send);
-      button2.addEventListener('click', send);
-      button3.addEventListener('click', send);
+
+      for (let i = 1; i < 9; i++) {
+        (function(i) {
+          elem = document.getElementById("button" + i);
+          elem.addEventListener(
+            "click", send);
+        }(i));
+      }
     }
 
     function send() {
@@ -36,13 +142,23 @@
 </head>
 
 <body>
-  <button id="button1" value=255>1</button>
+  <div id="titleParent">
+    <div id="titleChild">How do you feel today? <br><span style="font-size:0.6em; line-height:2;"> click whatever you feel !! </span> </div>
+  </div>
+  <button class="button" id="button1" value="1">joy</button>
   <br>
-  <button id="button2" value=125>2</button>
+  <button class="button" id="button2" value="2">trust</button>
   <br>
-  <button id="button3" value=0>3</button>
-
-
+  <button class="button" id="button3" value="3">fear</button>
+  <br>
+  <button class="button" id="button4" value="4">trust</button>
+  <br>
+  <button class="button" id="button5" value="5">fear</button>
+  <br>
+  <button class="button" id="button6" value="6">joy</button>
+  <br>
+  <button class="button" id="button7" value="7">trust</button>
+  <br>
+  <button class="button" id="button8" value="8">fear</button>
 </body>
-
 </html>

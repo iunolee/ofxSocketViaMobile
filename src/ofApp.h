@@ -31,9 +31,16 @@ public:
     std::string address;
     std::string status;
     
-    int r;
-    int g;
-    int b;
+    ofVideoGrabber vidGrabber;
+    int camWidth;
+    int camHeight;
+    
+    vector<int> emotionLists;
+    ofColor *colors;
+    ofColor selectedColor;
+    int selectedEmotion;
 
+    
 };
+
 

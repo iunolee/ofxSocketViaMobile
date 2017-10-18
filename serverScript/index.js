@@ -38,7 +38,6 @@ io.on('connection', function(socket) {
   //mobile part
   socket.on('button', function(data) {
     // Data comes in as whatever was sent, including objects
-    let sendData = {number : parseInt(data)};
     console.log("Received: 'button value' " + data);
     // // Send it to all of the clients
     // io.emit('chatmessage', data);
@@ -46,6 +45,7 @@ io.on('connection', function(socket) {
     // datas.intData = data;
     // console.log(sendValue.intData);
     // let emitInterval = setInterval(() => {
+    let sendData = {intData : parseInt(data)};
       io.emit('server-event', sendData)
     //   // socket.emit('pingy')
     // }, 2000)
